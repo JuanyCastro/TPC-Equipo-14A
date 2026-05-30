@@ -1,4 +1,4 @@
 <Solution>
-  <Project Path="dominio/dominio.csproj" />
-  <Project Path="TPC_Equipo-14A/TPC_Equipo-14A.csproj" />
+  <Project Path="dominio/dominio.csproj" Id="2fed1d44-8db9-4fe0-aab3-07d564358752" />
+  <Project Path="TPC_Equipo-14A/TPC_Equipo-14A.csproj" Id="ea6948bf-7c67-4613-99fb-1e195da189b6" />
 </Solution>

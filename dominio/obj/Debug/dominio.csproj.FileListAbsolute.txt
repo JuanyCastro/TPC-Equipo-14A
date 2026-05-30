@@ -1,0 +1,6 @@
+C:\Users\Seba\source\repos\TPC-Equipo-14A\dominio\bin\Debug\dominio.dll
+C:\Users\Seba\source\repos\TPC-Equipo-14A\dominio\bin\Debug\dominio.pdb
+C:\Users\Seba\source\repos\TPC-Equipo-14A\dominio\obj\Debug\dominio.csproj.AssemblyReference.cache
+C:\Users\Seba\source\repos\TPC-Equipo-14A\dominio\obj\Debug\dominio.csproj.CoreCompileInputs.cache
+C:\Users\Seba\source\repos\TPC-Equipo-14A\dominio\obj\Debug\dominio.dll
+C:\Users\Seba\source\repos\TPC-Equipo-14A\dominio\obj\Debug\dominio.pdb
