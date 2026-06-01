@@ -1,0 +1,6 @@
+C:\Users\Juany\source\repos\TPC_Equipo-14A\negocio\bin\Debug\negocio.dll
+C:\Users\Juany\source\repos\TPC_Equipo-14A\negocio\bin\Debug\negocio.pdb
+C:\Users\Juany\source\repos\TPC_Equipo-14A\negocio\obj\Debug\negocio.csproj.AssemblyReference.cache
+C:\Users\Juany\source\repos\TPC_Equipo-14A\negocio\obj\Debug\negocio.csproj.CoreCompileInputs.cache
+C:\Users\Juany\source\repos\TPC_Equipo-14A\negocio\obj\Debug\negocio.dll
+C:\Users\Juany\source\repos\TPC_Equipo-14A\negocio\obj\Debug\negocio.pdb

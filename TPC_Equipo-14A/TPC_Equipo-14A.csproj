@@ -253,6 +253,10 @@
       <Project>{2fed1d44-8db9-4fe0-aab3-07d564358752}</Project>
       <Name>dominio</Name>
     </ProjectReference>
+    <ProjectReference Include="..\negocio\negocio.csproj">
+      <Project>{4a0da3f5-0d6f-4a3d-8f45-074c08c1f4d6}</Project>
+      <Name>negocio</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
