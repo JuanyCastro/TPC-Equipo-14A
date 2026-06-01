@@ -4,3 +4,6 @@ C:\Users\Juany\source\repos\TPC_Equipo-14A\negocio\obj\Debug\negocio.csproj.Asse
 C:\Users\Juany\source\repos\TPC_Equipo-14A\negocio\obj\Debug\negocio.csproj.CoreCompileInputs.cache
 C:\Users\Juany\source\repos\TPC_Equipo-14A\negocio\obj\Debug\negocio.dll
 C:\Users\Juany\source\repos\TPC_Equipo-14A\negocio\obj\Debug\negocio.pdb
+C:\Users\Juany\source\repos\TPC_Equipo-14A\negocio\bin\Debug\dominio.dll
+C:\Users\Juany\source\repos\TPC_Equipo-14A\negocio\bin\Debug\dominio.pdb
+C:\Users\Juany\source\repos\TPC_Equipo-14A\negocio\obj\Debug\negocio.csproj.Up2Date
