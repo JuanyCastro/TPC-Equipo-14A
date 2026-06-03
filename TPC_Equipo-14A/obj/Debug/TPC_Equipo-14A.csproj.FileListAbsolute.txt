@@ -152,3 +152,5 @@ C:\Users\Juany\source\repos\TPC_Equipo-14A\TPC_Equipo-14A\obj\Debug\TPC_Equipo-1
 C:\Users\Juany\source\repos\TPC_Equipo-14A\TPC_Equipo-14A\obj\Debug\TPC_Equipo-14A.pdb
 C:\Users\Juany\source\repos\TPC_Equipo-14A\TPC_Equipo-14A\bin\negocio.dll
 C:\Users\Juany\source\repos\TPC_Equipo-14A\TPC_Equipo-14A\bin\negocio.pdb
+C:\Users\Seba\source\repos\TPC-Equipo-14A\TPC_Equipo-14A\bin\negocio.dll
+C:\Users\Seba\source\repos\TPC-Equipo-14A\TPC_Equipo-14A\bin\negocio.pdb
