@@ -9,11 +9,11 @@ namespace dominio
     public class Reserva
     {
         public int Id { get; set; }
-        public int IdCliente { get; set; }
-        public int IdCancha { get; set; }
+        public Usuario Usuario { get; set; }
+        public Cancha Cancha { get; set; }
         public DateTime FechaHoraInicio { get; set; }
         public DateTime FechaHoraFin { get; set; }
-        public int IdEstado { get; set; }
+        public EstadoReserva Estado { get; set; }
         public bool EsTurnoFijo { get; set; }
         public string Observaciones { get; set; }
         public DateTime FechaAlta { get; set; }
