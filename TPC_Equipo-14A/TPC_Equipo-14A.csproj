@@ -121,6 +121,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
+    <Content Include="AltaDeporte.aspx" />
     <Content Include="Deportes.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -208,6 +209,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AltaDeporte.aspx.cs">
+      <DependentUpon>AltaDeporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AltaDeporte.aspx.designer.cs">
+      <DependentUpon>AltaDeporte.aspx</DependentUpon>
     </Compile>
     <Compile Include="Deportes.aspx.cs">
       <DependentUpon>Deportes.aspx</DependentUpon>
