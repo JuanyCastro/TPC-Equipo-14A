@@ -100,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="AltaCancha.aspx" />
     <Content Include="AltaReserva.aspx" />
     <Content Include="AltaUsuario.aspx" />
     <Content Include="Canchas.aspx" />
@@ -189,6 +190,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AltaCancha.aspx.cs">
+      <DependentUpon>AltaCancha.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AltaCancha.aspx.designer.cs">
+      <DependentUpon>AltaCancha.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AltaUsuario.aspx.cs">
       <DependentUpon>AltaUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -205,6 +213,13 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Canchas.aspx.cs">
+      <DependentUpon>Canchas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Canchas.aspx.designer.cs">
+      <DependentUpon>Canchas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

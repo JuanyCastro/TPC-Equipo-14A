@@ -1,0 +1,16 @@
+﻿//------------------------------------------------------------------------------
+// <generado automáticamente>
+//     Este código fue generado por una herramienta.
+//
+//     Los cambios en este archivo podrían causar un comportamiento incorrecto y se perderán si
+//     se vuelve a generar el código. 
+// </generado automáticamente>
+//------------------------------------------------------------------------------
+
+namespace TPC_Equipo_14A
+{
+    public partial class Canchas
+    {
+        protected global::System.Web.UI.WebControls.GridView dgvCanchas;
+    }
+}

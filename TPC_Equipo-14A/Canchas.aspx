@@ -1,45 +1,32 @@
-﻿<%@ Page Title="Canchas" Language="C#" MasterPageFile="~/Site.Master" %>
-
+﻿<%@ Page Title="Gestión de Canchas" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Canchas.aspx.cs" Inherits="TPC_Equipo_14A.Canchas" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container mt-4">
-        <h2>Nuestras Canchas</h2>
-        <p class="text-muted">Listado de instalaciones disponibles para Fútbol y Pádel.</p>
-        
-        <table class="table table-striped table-hover mt-3">
-            <thead class="table-dark">
-                <tr>
-                    <th>Nombre</th>
-                    <th>Deporte</th>
-                    <th>Precio Base</th>
-                    <th>Estado</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Cancha Fútbol 5 - Sintético 1</td>
-                    <td>Fútbol 5</td>
-                    <td>$12000.00</td>
-                    <td><span class="badge bg-success">Activa</span></td>
-                </tr>
-                <tr>
-                    <td>Cancha Fútbol 7 - Césped Natural</td>
-                    <td>Fútbol 7</td>
-                    <td>$18000.00</td>
-                    <td><span class="badge bg-success">Activa</span></td>
-                </tr>
-                <tr>
-                    <td>Pádel Premium - Blindex 1</td>
-                    <td>Pádel</td>
-                    <td>$9000.00</td>
-                    <td><span class="badge bg-success">Activa</span></td>
-                </tr>
-                <tr>
-                    <td>Pádel Estándar - Muro 2</td>
-                    <td>Pádel</td>
-                    <td>$7500.00</td>
-                    <td><span class="badge bg-warning text-dark">En Mantenimiento</span></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2>Gestión de Canchas</h2>
+            <a href="AltaCancha.aspx" class="btn btn-primary">
+                <i class="fa-solid fa-plus"></i> Nueva Cancha
+            </a>
+        </div>
+
+        <div class="card shadow-sm mt-3">
+            <div class="card-body p-0">
+                <asp:GridView ID="dgvCanchas" runat="server" CssClass="table table-striped table-hover mb-0" AutoGenerateColumns="false" DataKeyNames="Id" OnRowCommand="dgvCanchas_RowCommand">
+                    <Columns>
+                        <asp:BoundField DataField="Id" HeaderText="ID" ItemStyle-Width="5%" HeaderStyle-CssClass="table-dark" />
+                        <asp:BoundField DataField="Nombre" HeaderText="Nombre" ItemStyle-Width="25%" HeaderStyle-CssClass="table-dark" />
+                        <asp:BoundField DataField="Deporte.Id" HeaderText="ID Deporte" ItemStyle-Width="10%" HeaderStyle-CssClass="table-dark" />
+                        <asp:BoundField DataField="PrecioBase" HeaderText="Precio Base" DataFormatString="{0:C}" ItemStyle-Width="15%" HeaderStyle-CssClass="table-dark" />
+                        <asp:CheckBoxField DataField="EnMantenimiento" HeaderText="En Mantenimiento" ItemStyle-Width="15%" HeaderStyle-CssClass="table-dark" />
+                        <asp:CheckBoxField DataField="Activa" HeaderText="Activa" ItemStyle-Width="10%" HeaderStyle-CssClass="table-dark" />
+                        <asp:TemplateField HeaderText="Acciones" ItemStyle-Width="20%" HeaderStyle-CssClass="table-dark">
+                            <ItemTemplate>
+                                <asp:Button ID="btnEditar" runat="server" CommandName="Editar" CommandArgument='<%# Eval("Id") %>' Text="Editar" CssClass="btn btn-sm btn-warning" />
+                                <asp:Button ID="btnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%# Eval("Id") %>' Text="Eliminar" CssClass="btn btn-sm btn-danger" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+            </div>
+        </div>
     </div>
 </asp:Content>
