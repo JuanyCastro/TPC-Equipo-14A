@@ -11,7 +11,7 @@ namespace TPC_Equipo_14A
 {
 
 
-    public partial class _Default
+    public partial class Default
     {
     }
 }
