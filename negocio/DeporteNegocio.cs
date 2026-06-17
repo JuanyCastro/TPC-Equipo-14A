@@ -43,6 +43,10 @@ namespace negocio
         }
         public void agregar(Deporte nuevo)
         {
+            validarDatos(nuevo);
+            if (nombreDeporteExiste(nuevo.Nombre))
+                throw new Exception("Ya existe un deporte con ese nombre.");
+
             AccesoDatos datos = new AccesoDatos();
             try
             {
@@ -51,10 +55,6 @@ namespace negocio
                 datos.setearParametro("@duracion", nuevo.DuracionBloqueMinutos);
                 datos.ejecutarAccion();
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
             finally
             {
                 datos.cerrarConexion();
@@ -62,6 +62,24 @@ namespace negocio
         }
         public void modificar(Deporte deporte)
         {
+            validarDatos(deporte);
+
+            // Validación inline para evitar duplicados excluyendo el deporte actual
+            AccesoDatos datosValidacion = new AccesoDatos();
+            try
+            {
+                datosValidacion.setearConsulta("SELECT Id FROM Deportes WHERE Nombre = @nombre AND Id != @id");
+                datosValidacion.setearParametro("@nombre", deporte.Nombre);
+                datosValidacion.setearParametro("@id", deporte.Id);
+                datosValidacion.ejecutarLectura();
+                if (datosValidacion.Lector.Read())
+                    throw new Exception("El nombre ingresado ya pertenece a otro deporte.");
+            }
+            finally
+            {
+                datosValidacion.cerrarConexion();
+            }
+
             AccesoDatos datos = new AccesoDatos();
             try
             {
@@ -71,10 +89,6 @@ namespace negocio
                 datos.setearParametro("@activo", deporte.Activo);
                 datos.setearParametro("@id", deporte.Id);
                 datos.ejecutarAccion();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
             }
             finally
             {
@@ -89,6 +103,36 @@ namespace negocio
                 datos.setearConsulta("UPDATE Deportes SET Activo = 0 WHERE Id = @id");
                 datos.setearParametro("@id", id);
                 datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        private void validarDatos(Deporte deporte)
+        {
+            if (string.IsNullOrWhiteSpace(deporte.Nombre))
+                throw new Exception("El nombre del deporte es obligatorio.");
+
+            if (deporte.DuracionBloqueMinutos <= 0)
+                throw new Exception("La duración del bloque debe ser mayor a 0 minutos.");
+        }
+
+        private bool nombreDeporteExiste(string nombre)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SELECT Id FROM Deportes WHERE Nombre = @nombre");
+                datos.setearParametro("@nombre", nombre);
+                datos.ejecutarLectura();
+
+                return datos.Lector.Read();
             }
             catch (Exception ex)
             {

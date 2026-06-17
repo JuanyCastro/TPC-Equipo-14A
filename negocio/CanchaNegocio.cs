@@ -50,25 +50,19 @@ namespace negocio
 
         public void agregar(Cancha nueva)
         {
-            if (nueva.Deporte == null || !deporteExiste(nueva.Deporte.Id))
-            {
-                throw new Exception("Error de validación: El Deporte asignado no existe en el sistema.");
-            }
+            validarDatos(nueva);
+            if (canchaExiste(nueva.Nombre))
+                throw new Exception("Ya existe una cancha con ese nombre.");
 
             AccesoDatos datos = new AccesoDatos();
             try
             {
                 datos.setearConsulta("INSERT INTO Canchas (Nombre, IdDeporte, PrecioBase, EnMantenimiento, Activa) VALUES (@nombre, @idDeporte, @precioBase, @enMantenimiento, 1)");
-                datos.setearParametro("@nombre", (object)nueva.Nombre ?? DBNull.Value);
+                datos.setearParametro("@nombre", nueva.Nombre);
                 datos.setearParametro("@idDeporte", nueva.Deporte.Id);
                 datos.setearParametro("@precioBase", nueva.PrecioBase);
                 datos.setearParametro("@enMantenimiento", nueva.EnMantenimiento);
-
                 datos.ejecutarAccion();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
             }
             finally
             {
@@ -76,29 +70,35 @@ namespace negocio
             }
         }
 
-        public void modificar(Cancha modificar)
+        public void modificar(Cancha modificarCancha)
         {
-            if (modificar.Deporte == null || !deporteExiste(modificar.Deporte.Id))
+            validarDatos(modificarCancha);
+            AccesoDatos datosValidacion = new AccesoDatos();
+            try
             {
-                throw new Exception("Error de validación: El Deporte asignado no existe en el sistema.");
+                datosValidacion.setearConsulta("SELECT Id FROM Canchas WHERE Nombre = @nombre AND Id != @id");
+                datosValidacion.setearParametro("@nombre", modificarCancha.Nombre);
+                datosValidacion.setearParametro("@id", modificarCancha.Id);
+                datosValidacion.ejecutarLectura();
+                if (datosValidacion.Lector.Read())
+                    throw new Exception("El nombre ingresado ya pertenece a otra cancha.");
+            }
+            finally
+            {
+                datosValidacion.cerrarConexion();
             }
 
             AccesoDatos datos = new AccesoDatos();
             try
             {
                 datos.setearConsulta("UPDATE Canchas SET Nombre = @nombre, IdDeporte = @idDeporte, PrecioBase = @precioBase, EnMantenimiento = @enMantenimiento, Activa = @activa WHERE Id = @id");
-                datos.setearParametro("@nombre", (object)modificar.Nombre ?? DBNull.Value);
-                datos.setearParametro("@idDeporte", modificar.Deporte.Id);
-                datos.setearParametro("@precioBase", modificar.PrecioBase);
-                datos.setearParametro("@enMantenimiento", modificar.EnMantenimiento);
-                datos.setearParametro("@activa", modificar.Activa);
-                datos.setearParametro("@id", modificar.Id);
-
+                datos.setearParametro("@nombre", modificarCancha.Nombre);
+                datos.setearParametro("@idDeporte", modificarCancha.Deporte.Id);
+                datos.setearParametro("@precioBase", modificarCancha.PrecioBase);
+                datos.setearParametro("@enMantenimiento", modificarCancha.EnMantenimiento);
+                datos.setearParametro("@activa", modificarCancha.Activa);
+                datos.setearParametro("@id", modificarCancha.Id);
                 datos.ejecutarAccion();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
             }
             finally
             {
@@ -115,6 +115,39 @@ namespace negocio
                 datos.setearParametro("@id", id);
 
                 datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        private void validarDatos(Cancha cancha)
+        {
+            if (string.IsNullOrWhiteSpace(cancha.Nombre))
+                throw new Exception("El nombre de la cancha es obligatorio.");
+
+            if (cancha.PrecioBase < 0)
+                throw new Exception("El precio base no puede ser negativo.");
+
+            if (cancha.Deporte == null || !deporteExiste(cancha.Deporte.Id))
+                throw new Exception("El deporte asignado no existe en el sistema.");
+        }
+
+        private bool canchaExiste(string nombre)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SELECT Id FROM Canchas WHERE Nombre = @nombre");
+                datos.setearParametro("@nombre", nombre);
+                datos.ejecutarLectura();
+
+                return datos.Lector.Read();
             }
             catch (Exception ex)
             {
