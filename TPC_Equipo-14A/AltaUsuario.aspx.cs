@@ -63,8 +63,7 @@ namespace TPC_Equipo_14A
             }
             catch (Exception ex)
             {
-                Session["Error"] = ex.Message;
-                Response.Redirect("Error.aspx");
+                lblError.Text = "Error: " + ex.Message;
             }
         }
     }

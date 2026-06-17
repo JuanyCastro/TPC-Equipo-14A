@@ -28,6 +28,7 @@
                 </div>
 
                 <div class="mt-4">
+                    <asp:Label ID="lblError" runat="server" CssClass="text-danger fw-bold mb-3 d-block"></asp:Label>
                     <asp:Button ID="btnAceptar" runat="server" Text="Guardar Deporte" CssClass="btn btn-primary" OnClick="btnAceptar_Click" />
                     <a href="Deportes.aspx" class="btn btn-secondary">Cancelar</a>
                 </div>
