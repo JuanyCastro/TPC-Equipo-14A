@@ -27,9 +27,7 @@ namespace negocio
                     aux.Email = (string)datos.Lector["Email"];
                     aux.Contrasena = (string)datos.Lector["Contrasena"];
                     aux.Activo = (bool)datos.Lector["Activo"];
-
-                    aux.Rol = new Rol();
-                    aux.Rol.Id = (int)datos.Lector["IdRol"];
+                    aux.Rol = (Rol)(int)datos.Lector["IdRol"];
 
                     if (!(datos.Lector["Nombre"] is DBNull))
                         aux.Nombre = (string)datos.Lector["Nombre"];
@@ -71,9 +69,7 @@ namespace negocio
                     aux.Email = (string)datos.Lector["Email"];
                     aux.Contrasena = (string)datos.Lector["Contrasena"];
                     aux.Activo = (bool)datos.Lector["Activo"];
-
-                    aux.Rol = new Rol();
-                    aux.Rol.Id = (int)datos.Lector["IdRol"];
+                    aux.Rol = (Rol)(int)datos.Lector["IdRol"];
 
                     if (!(datos.Lector["Nombre"] is DBNull))
                         aux.Nombre = (string)datos.Lector["Nombre"];
@@ -115,9 +111,7 @@ namespace negocio
                     aux.Email = (string)datos.Lector["Email"];
                     aux.Contrasena = (string)datos.Lector["Contrasena"];
                     aux.Activo = (bool)datos.Lector["Activo"];
-
-                    aux.Rol = new Rol();
-                    aux.Rol.Id = (int)datos.Lector["IdRol"];
+                    aux.Rol = (Rol)(int)datos.Lector["IdRol"];
 
                     if (!(datos.Lector["Nombre"] is DBNull))
                         aux.Nombre = (string)datos.Lector["Nombre"];
@@ -157,7 +151,7 @@ namespace negocio
                 datos.setearParametro("@email", nuevo.Email);
                 datos.setearParametro("@telefono", (object)nuevo.Telefono ?? DBNull.Value);
                 datos.setearParametro("@contrasena", nuevo.Contrasena);
-                datos.setearParametro("@idRol", nuevo.Rol.Id);
+                datos.setearParametro("@idRol", (int)nuevo.Rol);
 
                 datos.ejecutarAccion();
             }
@@ -197,7 +191,7 @@ namespace negocio
                 datos.setearParametro("@apellido", (object)user.Apellido ?? DBNull.Value);
                 datos.setearParametro("@email", user.Email);
                 datos.setearParametro("@telefono", (object)user.Telefono ?? DBNull.Value);
-                datos.setearParametro("@idRol", user.Rol.Id);
+                datos.setearParametro("@idRol", (int)user.Rol);
                 datos.setearParametro("@activo", user.Activo);
                 datos.setearParametro("@id", user.Id);
 

@@ -22,7 +22,7 @@ namespace TPC_Equipo_14A
                     txtEmail.Text = seleccionado.Email;
                     txtTelefono.Text = seleccionado.Telefono;
                     chkActivo.Checked = seleccionado.Activo;
-                    ddlRol.SelectedValue = seleccionado.Rol.Id.ToString();
+                    ddlRol.SelectedValue = ((int)seleccionado.Rol).ToString();
 
                     divContrasena.Visible = false;
                 }
@@ -46,7 +46,7 @@ namespace TPC_Equipo_14A
                 usuario.Activo = chkActivo.Checked;
 
                 usuario.Rol = new Rol();
-                usuario.Rol.Id = int.Parse(ddlRol.SelectedValue);
+                usuario.Rol = (Rol)int.Parse(ddlRol.SelectedValue);
 
                 if (Request.QueryString["id"] != null)
                 {

@@ -63,8 +63,6 @@ namespace negocio
         public void modificar(Deporte deporte)
         {
             validarDatos(deporte);
-
-            // Validación inline para evitar duplicados excluyendo el deporte actual
             AccesoDatos datosValidacion = new AccesoDatos();
             try
             {

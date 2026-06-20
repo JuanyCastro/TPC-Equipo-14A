@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace dominio
 {
-    public class Rol
+    public enum Rol
     {
-        public int Id { get; set; }
-        public string Nombre { get; set; }
+        Administrador = 1,
+        Cliente = 2
     }
 }
