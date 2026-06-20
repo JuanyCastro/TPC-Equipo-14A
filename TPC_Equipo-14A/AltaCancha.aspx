@@ -5,14 +5,19 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="mb-3">
-                    <label class="form-label">Nombre de la Cancha</label>
-                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" />
-                    <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ControlToValidate="txtNombre" ErrorMessage="El nombre es obligatorio." CssClass="text-danger" Display="Dynamic" />
+                    <label class="form-label">Deporte</label>
+                    <asp:DropDownList ID="ddlDeporte" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlDeporte_SelectedIndexChanged" AppendDataBoundItems="true">
+                        <asp:ListItem Text="-- Seleccione un Deporte --" Value="0" />
+                    </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="rfvDeporte" runat="server" ControlToValidate="ddlDeporte" InitialValue="0" ErrorMessage="Seleccione un deporte." CssClass="text-danger" Display="Dynamic" />
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Deporte</label>
-                    <asp:DropDownList ID="ddlDeporte" runat="server" CssClass="form-select"></asp:DropDownList>
+                    <label class="form-label">Superficie</label>
+                    <asp:DropDownList ID="ddlSuperficie" runat="server" CssClass="form-select" Enabled="false">
+                        <asp:ListItem Text="-- Seleccione primero un Deporte --" Value="0" />
+                    </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="rfvSuperficie" runat="server" ControlToValidate="ddlSuperficie" InitialValue="0" ErrorMessage="Seleccione una superficie." CssClass="text-danger" Display="Dynamic" />
                 </div>
 
                 <div class="mb-3">

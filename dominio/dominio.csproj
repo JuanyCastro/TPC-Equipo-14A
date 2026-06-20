@@ -45,6 +45,7 @@
     <Compile Include="Deporte.cs" />
     <Compile Include="Enums\EstadoReserva.cs" />
     <Compile Include="Enums\Rol.cs" />
+    <Compile Include="Enums\Superficie.cs" />
     <Compile Include="Pago.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reserva.cs" />

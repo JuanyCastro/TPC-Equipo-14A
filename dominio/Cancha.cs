@@ -13,6 +13,7 @@ namespace dominio
         public Deporte Deporte { get; set; }
         public decimal PrecioBase { get; set; }
         public bool EnMantenimiento { get; set; }
+        public Superficie Superficie { get; set; }
         public bool Activa { get; set; }
     }
 }
