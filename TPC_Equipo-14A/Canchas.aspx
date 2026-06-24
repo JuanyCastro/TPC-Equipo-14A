@@ -20,7 +20,7 @@
                         <asp:TemplateField HeaderText="Deporte" ItemStyle-Width="15%" HeaderStyle-CssClass="table-dark">
                             <ItemTemplate>
                                 <span class="badge bg-primary text-white px-3 py-2 rounded-pill shadow-sm">
-                                    <i class="fa-solid fa-trophy me-1"></i><%# ObtenerNombreDeporte(Eval("Deporte.Id")) %>
+                                    <i class="fa-solid fa-trophy me-1"></i><%# Eval("Deporte.Nombre") %>
                                 </span>
                             </ItemTemplate>
                         </asp:TemplateField>

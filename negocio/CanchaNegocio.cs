@@ -13,7 +13,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("SELECT Id, Nombre, IdDeporte, IdSuperficie, PrecioBase, EnMantenimiento, Activa FROM Canchas");
+                datos.setearConsulta("SELECT C.Id, C.Nombre, C.IdDeporte, D.Nombre AS NombreDeporte, C.IdSuperficie, C.PrecioBase, C.EnMantenimiento, C.Activa FROM Canchas C LEFT JOIN Deportes D ON C.IdDeporte = D.Id");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -26,7 +26,11 @@ namespace negocio
 
                     aux.Deporte = new Deporte();
                     if (!(datos.Lector["IdDeporte"] is DBNull))
+                    {
                         aux.Deporte.Id = (int)datos.Lector["IdDeporte"];
+                        if (!(datos.Lector["NombreDeporte"] is DBNull))
+                            aux.Deporte.Nombre = (string)datos.Lector["NombreDeporte"];
+                    }
 
                     if (!(datos.Lector["IdSuperficie"] is DBNull))
                         aux.Superficie = (Superficie)(int)datos.Lector["IdSuperficie"];

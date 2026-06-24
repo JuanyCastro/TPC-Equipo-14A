@@ -1,4 +1,6 @@
-﻿using System;
+﻿using dominio;
+using negocio;
+using System;
 using System.Web.UI;
 
 namespace TPC_Equipo_14A
@@ -7,7 +9,7 @@ namespace TPC_Equipo_14A
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-        
+
         }
     }
 }

@@ -43,6 +43,11 @@ namespace negocio
 
         public int agregarReservaPendiente(Reserva nueva)
         {
+            if (nueva.FechaHoraInicio == DateTime.MinValue || nueva.FechaHoraFin == DateTime.MinValue)
+            {
+                throw new Exception("Error: La fecha de la reserva no fue asignada. Verificá que el frontend esté cargando 'FechaHoraInicio' y 'FechaHoraFin' antes de guardar.");
+            }
+
             AccesoDatos datos = new AccesoDatos();
             try
             {
@@ -62,6 +67,7 @@ namespace negocio
                 {
                     return Convert.ToInt32(datos.Lector[0]);
                 }
+
                 throw new Exception("No se pudo obtener el ID de la reserva.");
             }
             finally
