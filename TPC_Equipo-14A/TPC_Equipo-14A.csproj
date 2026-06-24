@@ -103,6 +103,10 @@
     <Content Include="AltaCancha.aspx" />
     <Content Include="AltaReserva.aspx" />
     <Content Include="AltaUsuario.aspx" />
+    <Content Include="Checkout.aspx" />
+    <Content Include="PagoExitoso.aspx" />
+    <Content Include="PagoFallido.aspx" />
+    <Content Include="PagoPendiente.aspx" />
     <Content Include="Turnos.aspx" />
     <Content Include="Canchas.aspx" />
     <Content Include="Contact.aspx" />
@@ -214,6 +218,34 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Checkout.aspx.cs">
+      <DependentUpon>Checkout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout.aspx.designer.cs">
+      <DependentUpon>Checkout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagoExitoso.aspx.cs">
+      <DependentUpon>PagoExitoso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagoExitoso.aspx.designer.cs">
+      <DependentUpon>PagoExitoso.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagoFallido.aspx.cs">
+      <DependentUpon>PagoFallido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagoFallido.aspx.designer.cs">
+      <DependentUpon>PagoFallido.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagoPendiente.aspx.cs">
+      <DependentUpon>PagoPendiente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagoPendiente.aspx.designer.cs">
+      <DependentUpon>PagoPendiente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Turnos.aspx.cs">
       <DependentUpon>Turnos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
