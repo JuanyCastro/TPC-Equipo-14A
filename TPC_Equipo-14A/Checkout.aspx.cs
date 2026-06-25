@@ -41,7 +41,7 @@ namespace TPC_Equipo_14A
                 lblFecha.Text = $"{DateTime.Parse(fecha).ToString("dd/MM/yyyy")} - {horas[0]} hs";
 
                 decimal precioTotal = canchaActual.PrecioBase * horas.Length;
-                decimal montoSeña = precioTotal * 0.01m;
+                decimal montoSeña = precioTotal * 0.20m;
 
                 lblTotal.Text = precioTotal.ToString("C");
                 lblSena.Text = montoSeña.ToString("C");
