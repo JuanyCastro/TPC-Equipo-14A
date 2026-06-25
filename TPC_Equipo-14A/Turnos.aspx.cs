@@ -37,6 +37,7 @@ namespace TPC_Equipo_14A
         {
             if (!IsPostBack)
             {
+                txtFecha.Attributes["min"] = DateTime.Today.ToString("yyyy-MM-dd");
                 cargarDeportes();
             }
         }
@@ -114,16 +115,49 @@ namespace TPC_Equipo_14A
         {
             if (IdCanchaSeleccionada > 0 && !string.IsNullOrEmpty(txtFecha.Text))
             {
-                DateTime fecha = DateTime.Parse(txtFecha.Text);
-                ReservaNegocio negocio = new ReservaNegocio();
+                DateTime fecha;
 
+                if (!DateTime.TryParse(txtFecha.Text, out fecha) || fecha.Year < DateTime.Today.Year)
+                {
+                    lblSinHorarios.Text = "Por favor, ingresá una fecha válida.";
+                    lblSinHorarios.Visible = true;
+                    rptHorarios.DataSource = null;
+                    rptHorarios.DataBind();
+                    return;
+                }
+
+                if (fecha.Date < DateTime.Today)
+                {
+                    lblSinHorarios.Text = "No podés reservar turnos en días pasados.";
+                    lblSinHorarios.Visible = true;
+                    rptHorarios.DataSource = null;
+                    rptHorarios.DataBind();
+                    return;
+                }
+
+                ReservaNegocio negocio = new ReservaNegocio();
                 List<TimeSpan> libresTimeSpan = negocio.obtenerHorariosLibres(IdCanchaSeleccionada, fecha, 60);
+
+                if (fecha.Date == DateTime.Today)
+                {
+                    TimeSpan horaActual = DateTime.Now.TimeOfDay;
+                    libresTimeSpan = libresTimeSpan.Where(t => t > horaActual).ToList();
+                }
+
                 List<string> libresTexto = libresTimeSpan.Select(t => t.ToString(@"hh\:mm")).ToList();
 
                 rptHorarios.DataSource = libresTexto;
                 rptHorarios.DataBind();
 
-                lblSinHorarios.Visible = libresTexto.Count == 0;
+                if (libresTexto.Count == 0)
+                {
+                    lblSinHorarios.Text = "No hay horarios disponibles para esta fecha.";
+                    lblSinHorarios.Visible = true;
+                }
+                else
+                {
+                    lblSinHorarios.Visible = false;
+                }
             }
         }
 

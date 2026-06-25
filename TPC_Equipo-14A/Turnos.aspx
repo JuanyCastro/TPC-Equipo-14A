@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="Reservar Turno" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Turnos.aspx.cs" Inherits="TPC_Equipo_14A.Turnos" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container mt-4 mb-5">
         <h2 class="fw-bold text-center mb-4">Elegí tu turno</h2>
