@@ -240,6 +240,46 @@ namespace negocio
             if (!string.IsNullOrEmpty(user.Telefono) && !Regex.IsMatch(user.Telefono, @"^[0-9\-\+\s]+$"))
                 throw new Exception("El teléfono solo puede contener números y los símbolos + o -.");
         }
+        public bool Loguear(Usuario user)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SELECT Id, Nombre, Apellido, IdRol, Activo FROM Usuarios WHERE Email = @email AND Contrasena = @pass");
+                datos.setearParametro("@email", user.Email);
+                datos.setearParametro("@pass", user.Contrasena);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    bool activo = (bool)datos.Lector["Activo"];
+                    if (!activo)
+                    {
+                        throw new Exception("El usuario se encuentra inactivo. Comunicate con la administración.");
+                    }
+
+                    user.Id = (int)datos.Lector["Id"];
+                    user.Rol = (Rol)(int)datos.Lector["IdRol"];
+
+                    if (!(datos.Lector["Nombre"] is DBNull))
+                        user.Nombre = (string)datos.Lector["Nombre"];
+
+                    if (!(datos.Lector["Apellido"] is DBNull))
+                        user.Apellido = (string)datos.Lector["Apellido"];
+
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
 
         private bool emailExiste(string email)
         {

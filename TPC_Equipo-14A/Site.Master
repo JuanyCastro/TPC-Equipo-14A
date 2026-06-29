@@ -1,5 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="TPC_Equipo_14A.SiteMaster" %>
-
+<%@ Import Namespace="negocio" %>
+<%@ Import Namespace="dominio" %>
 <!DOCTYPE html>
 <html lang="es">
 <head runat="server">
@@ -47,15 +48,25 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav align-items-center">
                         <li class="nav-item"><a class="nav-link px-3" href="Default.aspx">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link px-3" href="Deportes.aspx">Deportes</a></li>
-                        <li class="nav-item"><a class="nav-link px-3" href="Canchas.aspx">Canchas</a></li>
-                        <li class="nav-item"><a class="nav-link px-3" href="Usuarios.aspx">Usuarios</a></li>
+                        <li class="nav-item"><a class="nav-link px-3" href="Turnos.aspx">Reservar Turno</a></li>
+                        
+                        <% if (negocio.Seguridad.esAdmin(Session["usuario"])) { %>
+                            <li class="nav-item"><a class="nav-link px-3 text-warning" href="Deportes.aspx">Deportes</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 text-warning" href="Canchas.aspx">Canchas</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 text-warning" href="Usuarios.aspx">Usuarios</a></li>
+                        <% } %>
                     </ul>
                     
-                    <div class="d-flex ms-auto mt-3 mt-lg-0">
-                        <a href="Login.aspx" class="btn btn-outline-light rounded-pill px-4 fw-bold">
-                            <i class="fa-solid fa-user me-2"></i> Iniciar Sesión
-                        </a>
+                    <div class="d-flex ms-auto mt-3 mt-lg-0 align-items-center">
+                        <% if (!negocio.Seguridad.sesionActiva(Session["usuario"])) { %>
+                            <a href="Login.aspx" class="btn btn-outline-light rounded-pill px-4 fw-bold">
+                                <i class="fa-solid fa-user me-2"></i> Iniciar Sesión
+                            </a>
+                        <% } else { %>
+                            <asp:Label ID="lblUser" runat="server" CssClass="text-light fw-bold me-3"></asp:Label>
+                            <asp:Image ID="imgAvatar" runat="server" CssClass="me-3 shadow-sm" style="width: 40px; height: 40px; border-radius: 50%;" />
+                            <asp:Button ID="btnSalir" runat="server" Text="Salir" CssClass="btn btn-danger rounded-pill px-4 fw-bold shadow-sm" OnClick="btnSalir_Click" />
+                        <% } %>
                     </div>
                 </div>
             </div>
