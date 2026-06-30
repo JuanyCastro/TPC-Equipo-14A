@@ -8,6 +8,12 @@ namespace TPC_Equipo_14A
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!negocio.Seguridad.esAdmin(Session["usuario"]))
+            {
+                Session.Add("error", "No tenés permisos para acceder a esta pantalla.");
+                Response.Redirect("Default.aspx", false);
+                return;
+            }
             if (!IsPostBack && Request.QueryString["id"] != null)
             {
                 int id = int.Parse(Request.QueryString["id"]);
