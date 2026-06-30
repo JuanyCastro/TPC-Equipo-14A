@@ -1,11 +1,7 @@
 ﻿using dominio;
 using negocio;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace TPC_Equipo_14A
 {
@@ -20,8 +16,7 @@ namespace TPC_Equipo_14A
                 lblUser.Text = $"Hola, {nombreMostrar}!";
                 imgAvatar.ImageUrl = $"https://ui-avatars.com/api/?name={nombreMostrar}&background=0D6EFD&color=fff&rounded=true";
             }
-
-            if (!(Page is Default || Page is Turnos || Page is Checkout || Page is Login))
+            if (!(Page is Default || Page is Turnos || Page is Checkout || Page is Login || Page is Registro || Page is RecuperarPassword))
             {
                 if (!Seguridad.sesionActiva(Session["usuario"]))
                 {

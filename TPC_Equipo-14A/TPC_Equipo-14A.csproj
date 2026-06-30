@@ -108,6 +108,8 @@
     <Content Include="PagoExitoso.aspx" />
     <Content Include="PagoFallido.aspx" />
     <Content Include="PagoPendiente.aspx" />
+    <Content Include="RecuperarPassword.aspx" />
+    <Content Include="Registro.aspx" />
     <Content Include="Turnos.aspx" />
     <Content Include="Canchas.aspx" />
     <Content Include="Contact.aspx" />
@@ -253,6 +255,20 @@
     </Compile>
     <Compile Include="PagoPendiente.aspx.designer.cs">
       <DependentUpon>PagoPendiente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RecuperarPassword.aspx.cs">
+      <DependentUpon>RecuperarPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecuperarPassword.aspx.designer.cs">
+      <DependentUpon>RecuperarPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registro.aspx.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registro.aspx.designer.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
     </Compile>
     <Compile Include="Turnos.aspx.cs">
       <DependentUpon>Turnos.aspx</DependentUpon>
