@@ -45,7 +45,7 @@ namespace TPC_Equipo_14A
         private void cargarDeportes()
         {
             DeporteNegocio negocio = new DeporteNegocio();
-            List<Deporte> lista = negocio.listar();
+            List<Deporte> lista = negocio.listarActivos();
 
             rptDeportes.DataSource = lista;
             rptDeportes.DataBind();
@@ -60,7 +60,7 @@ namespace TPC_Equipo_14A
         private void cargarCanchasPorDeporte(int idDeporte)
         {
             CanchaNegocio negocio = new CanchaNegocio();
-            List<Cancha> listaFiltrada = negocio.listar().Where(c => c.Deporte.Id == idDeporte && c.Activa).ToList();
+            List<Cancha> listaFiltrada = negocio.listar().Where(c => c.Deporte.Id == idDeporte && c.Activa && !c.EnMantenimiento).ToList();
 
             rptCanchas.DataSource = listaFiltrada;
             rptCanchas.DataBind();
@@ -135,8 +135,12 @@ namespace TPC_Equipo_14A
                     return;
                 }
 
+                DeporteNegocio depNegocio = new DeporteNegocio();
+                Deporte deporteActual = depNegocio.listarActivos().Find(d => d.Id == IdDeporteSeleccionado);
+                int duracionBloque = deporteActual != null ? deporteActual.DuracionBloqueMinutos : 60;
+
                 ReservaNegocio negocio = new ReservaNegocio();
-                List<TimeSpan> libresTimeSpan = negocio.obtenerHorariosLibres(IdCanchaSeleccionada, fecha, 60);
+                List<TimeSpan> libresTimeSpan = negocio.obtenerHorariosLibres(IdCanchaSeleccionada, fecha, duracionBloque);
 
                 if (fecha.Date == DateTime.Today)
                 {
@@ -185,7 +189,7 @@ namespace TPC_Equipo_14A
                     pnlCheckout.Visible = true;
                     decimal total = PrecioCanchaSeleccionada * seleccionadas.Count;
                     lblPrecioTotal.Text = total.ToString("0.00");
-                    lblPrecioSena.Text = (total * 0.20m).ToString("0.00");
+                    lblPrecioSena.Text = "10.00";
                 }
                 else
                 {

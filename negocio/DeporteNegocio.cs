@@ -41,6 +41,35 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+        public List<Deporte> listarActivos()
+        {
+            List<Deporte> lista = new List<Deporte>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SELECT Id, Nombre, DuracionBloqueMinutos, Activo FROM Deportes WHERE Activo = 1");
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Deporte aux = new Deporte();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.DuracionBloqueMinutos = (int)datos.Lector["DuracionBloqueMinutos"];
+                    aux.Activo = (bool)datos.Lector["Activo"];
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
         public void agregar(Deporte nuevo)
         {
             validarDatos(nuevo);
