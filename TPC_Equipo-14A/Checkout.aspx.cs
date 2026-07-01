@@ -41,7 +41,7 @@ namespace TPC_Equipo_14A
                 lblFecha.Text = $"{DateTime.Parse(fecha).ToString("dd/MM/yyyy")} - {horas[0]} hs";
 
                 decimal precioTotal = canchaActual.PrecioBase * horas.Length;
-                decimal montoSeña = precioTotal * 0.20m;
+                decimal montoSeña = precioTotal * 0.02m;
 
                 lblTotal.Text = precioTotal.ToString("C");
                 lblSena.Text = montoSeña.ToString("C");
@@ -77,7 +77,7 @@ namespace TPC_Equipo_14A
 
                 Session["IdReservaPendiente"] = idReservaGenerada;
 
-                decimal montoSeña = (canchaActual.PrecioBase * horasSeleccionadas.Count) * 0.20m;
+                decimal montoSeña = (canchaActual.PrecioBase * horasSeleccionadas.Count) * 0.02m;
                 string urlBase = Request.Url.GetLeftPart(UriPartial.Authority);
 
                 MercadoPagoNegocio mpNegocio = new MercadoPagoNegocio(urlBase);

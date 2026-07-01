@@ -25,7 +25,7 @@
                         <asp:Label ID="lblTotal" runat="server" CssClass="fw-bold text-dark"></asp:Label>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0 bg-light rounded-3 mt-3 p-3 border border-info border-opacity-25 shadow-sm">
-                        <span class="text-primary fw-bold">Seña a pagar (20%):</span>
+                        <span class="text-primary fw-bold">Seña a pagar (2%):</span>
                         <asp:Label ID="lblSena" runat="server" CssClass="fw-bold text-primary fs-5"></asp:Label>
                     </li>
                 </ul>

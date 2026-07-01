@@ -189,7 +189,9 @@ namespace TPC_Equipo_14A
                     pnlCheckout.Visible = true;
                     decimal total = PrecioCanchaSeleccionada * seleccionadas.Count;
                     lblPrecioTotal.Text = total.ToString("0.00");
-                    lblPrecioSena.Text = "10.00";
+
+                    decimal sena = total * 0.02m;
+                    lblPrecioSena.Text = sena.ToString("0.00");
                 }
                 else
                 {

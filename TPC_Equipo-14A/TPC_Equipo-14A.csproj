@@ -100,7 +100,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AltaCancha.aspx" />
-    <Content Include="AltaReserva.aspx" />
     <Content Include="AltaUsuario.aspx" />
     <Content Include="Checkout.aspx" />
     <Content Include="Login.aspx" />
