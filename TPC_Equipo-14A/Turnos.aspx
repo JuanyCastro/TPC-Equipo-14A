@@ -54,7 +54,7 @@
 
         <asp:UpdatePanel ID="upTurnos" runat="server">
             <ContentTemplate>
-                                <div class="d-flex justify-content-center mb-5">
+                <div class="d-flex justify-content-center mb-5">
                     <ul class="nav nav-pills gap-2 shadow-sm p-2 bg-white rounded-pill border">
                         <asp:Repeater ID="rptDeportes" runat="server" OnItemCommand="rptDeportes_ItemCommand">
                             <ItemTemplate>
@@ -70,6 +70,7 @@
                         </asp:Repeater>
                     </ul>
                 </div>
+
                 <div class="row g-4 mb-5 justify-content-center">
                     <asp:Repeater ID="rptCanchas" runat="server" OnItemCommand="rptCanchas_ItemCommand">
                         <ItemTemplate>
@@ -105,7 +106,7 @@
                                             <asp:LinkButton ID="btnSeleccionarCancha" runat="server" 
                                                 CommandName="SeleccionarCancha" 
                                                 CommandArgument='<%# Eval("Id") + "|" + Eval("PrecioBase") %>' 
-                                                CssClass='<%# Convert.ToInt32(Eval("Id")) == IdCanchaSeleccionada ? "btn btn-primary w-100 fw-bold rounded-pill shadow-sm" : "btn btn-outline-primary w-100 fw-bold rounded-pill" %>'>
+                                                CssClass='<%# Convert.ToInt32(Eval("Id")) == IdCanchaSeleccionada ? "btn btn-primary w-100 fw-bold rounded-pill shadow-sm" : "btn btn-outline-primary w-100 fw-bold rounded-pill btn-hover-scale" %>'>
                                                 <%# Convert.ToInt32(Eval("Id")) == IdCanchaSeleccionada ? "<i class='fa-solid fa-circle-check me-2'></i>Seleccionada" : "Elegir esta cancha" %>
                                             </asp:LinkButton>
                                         </div>
@@ -115,6 +116,7 @@
                         </ItemTemplate>
                     </asp:Repeater>
                 </div>
+
                 <asp:Panel ID="pnlReserva" runat="server" Visible="false">
                     <div class="card shadow-lg border-0 rounded-4 p-4 p-md-5 mt-4 bg-white">
                         <h4 class="fw-bold mb-4 text-dark"><i class="fa-regular fa-calendar-check text-primary me-2"></i>Disponibilidad</h4>
@@ -147,6 +149,7 @@
                         </div>
                     </div>
                 </asp:Panel>
+
                 <asp:Panel ID="pnlCheckout" runat="server" Visible="false">
                     <div class="card shadow-lg mt-4 border-0 rounded-4 overflow-hidden">
                         <div class="card-body bg-dark text-white p-4 p-md-5">
@@ -158,12 +161,12 @@
                                         <span class="fs-5 fw-bold">$<asp:Label ID="lblPrecioTotal" runat="server"></asp:Label></span>
                                     </div>
                                     <div class="d-flex align-items-center bg-white bg-opacity-10 p-3 rounded-3 mt-3 border border-secondary border-opacity-25">
-                                        <span class="text-light me-auto fw-bold">Seña requerida para confirmar (20%):</span>
+                                        <span class="text-light me-auto fw-bold">Seña requerida para confirmar (2%):</span>
                                         <span class="fs-4 fw-bold text-success">$<asp:Label ID="lblPrecioSena" runat="server"></asp:Label></span>
                                     </div>
                                 </div>
                                 <div class="col-md-5 d-flex justify-content-md-end">
-                                    <asp:Button ID="btnSeñar" runat="server" Text="Pagar Seña" CssClass="btn btn-primary btn-lg fw-bold rounded-pill px-5 py-3 shadow-lg w-100 text-center" OnClick="btnSeñar_Click" />
+                                    <asp:Button ID="btnSeñar" runat="server" Text="Pagar Seña" CssClass="btn btn-primary btn-lg fw-bold rounded-pill px-5 py-3 shadow-lg w-100 text-center btn-hover-scale" OnClick="btnSeñar_Click" />
                                 </div>
                             </div>
                         </div>

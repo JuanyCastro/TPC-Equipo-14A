@@ -18,19 +18,11 @@ namespace TPC_Equipo_14A
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
+            Page.Validate();
+            if (!Page.IsValid) return;
+
             try
             {
-                if (string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(txtPassword.Text))
-                {
-                    mostrarError("Debes completar todos los campos obligatorios.");
-                    return;
-                }
-
-                if (txtPassword.Text != txtConfirmPassword.Text)
-                {
-                    mostrarError("Las contraseñas no coinciden.");
-                    return;
-                }
                 Usuario nuevo = new Usuario();
                 UsuarioNegocio negocio = new UsuarioNegocio();
 
@@ -51,14 +43,19 @@ namespace TPC_Equipo_14A
                 }
                 else
                 {
-                    lblError.CssClass = "alert alert-warning fw-bold mb-3 d-block text-center";
-                    mostrarError("El usuario se guardó en la base de datos, pero falló el Autologin. Probá iniciar sesión manualmente.");
+                    mostrarError("¡Cuenta creada con éxito! Por favor, iniciá sesión manualmente.");
                 }
             }
             catch (Exception ex)
             {
-                lblError.CssClass = "alert alert-danger fw-bold mb-3 d-block text-center";
-                mostrarError("Error técnico en la BD: " + ex.Message);
+                if (ex.Message.ToLower().Contains("correo") || ex.Message.ToLower().Contains("email") || ex.Message.ToLower().Contains("unique"))
+                {
+                    mostrarError("Ese correo electrónico ya se encuentra registrado.");
+                }
+                else
+                {
+                    mostrarError("No pudimos crear tu cuenta en este momento. Por favor, intentá de nuevo más tarde.");
+                }
             }
         }
 

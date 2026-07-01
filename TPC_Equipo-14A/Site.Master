@@ -16,6 +16,61 @@
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <style>
+        body { background-color: #f4f6f9; }
+        .form-control:focus, .form-select:focus {
+            box-shadow: none !important;
+            border-color: transparent !important;
+        }
+        .input-wrapper {
+            background-color: #f8f9fa;
+            transition: all 0.3s ease-in-out;
+            border: 1px solid #dee2e6;
+        }
+        .input-wrapper:focus-within {
+            background-color: #ffffff;
+            border-color: #0d6efd !important;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15) !important;
+        }
+        .btn-hover-scale { transition: transform 0.2s ease-in-out; }
+        .btn-hover-scale:hover { transform: scale(1.03); }
+        .table-custom-header th { background-color: #212529 !important; color: white !important; font-size: 0.85rem; text-transform: uppercase; padding: 1rem; border: none; }
+        .table-custom-row td { padding: 1rem; vertical-align: middle; border-bottom: 1px solid #eaedf1; }
+        .navbar-nav .nav-link { transition: color 0.2s ease-in-out; }
+        .navbar-nav .nav-link:hover { color: #f8f9fa !important; }
+        .custom-switch {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .custom-switch input[type="checkbox"] {
+            width: 2.5em;
+            height: 1.25em;
+            appearance: none;
+            -webkit-appearance: none;
+            background-color: #dee2e6;
+            border-radius: 2em;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e");
+            background-position: left center;
+            background-repeat: no-repeat;
+            transition: background-position .15s ease-in-out, background-color .15s ease-in-out;
+            cursor: pointer;
+            border: 1px solid #adb5bd;
+            margin: 0;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,.075);
+        }
+        .custom-switch input[type="checkbox"]:checked {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+            background-position: right center;
+        }
+        .custom-switch label {
+            cursor: pointer;
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
     <form runat="server">
@@ -23,14 +78,6 @@
             <Scripts>
                 <asp:ScriptReference Name="MsAjaxBundle" />
                 <asp:ScriptReference Name="jquery" />
-                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
-                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
-                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
-                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
-                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
-                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
-                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
-                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
                 <asp:ScriptReference Name="WebFormsBundle" />
             </Scripts>
         </asp:ScriptManager>
@@ -41,45 +88,41 @@
                     <i class="fa-solid fa-futbol text-info me-2"></i>Complejo Deportivo
                 </a>
                 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav align-items-center">
-                        <li class="nav-item"><a class="nav-link px-3" href="Default.aspx">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link px-3" href="Turnos.aspx">Reservar Turno</a></li>
+                        <li class="nav-item"><a class="nav-link px-3 text-light" href="Default.aspx">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link px-3 text-light" href="Turnos.aspx">Reservar Turno</a></li>
                         
                         <% if (negocio.Seguridad.esAdmin(Session["usuario"])) { %>
-                            <li class="nav-item"><a class="nav-link px-3 text-warning fw-bold" href="Reservas.aspx">Reservas</a></li>
-                            <li class="nav-item"><a class="nav-link px-3 text-warning" href="Deportes.aspx">Deportes</a></li>
-                            <li class="nav-item"><a class="nav-link px-3 text-warning" href="Canchas.aspx">Canchas</a></li>
-                            <li class="nav-item"><a class="nav-link px-3 text-warning" href="Usuarios.aspx">Usuarios</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 text-light" href="Reservas.aspx">Reservas</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 text-light" href="Deportes.aspx">Deportes</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 text-light" href="Canchas.aspx">Canchas</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 text-light" href="Usuarios.aspx">Usuarios</a></li>
                         <% } %>
                     </ul>
                     
                     <div class="d-flex ms-auto mt-3 mt-lg-0 align-items-center">
                         <% if (!negocio.Seguridad.sesionActiva(Session["usuario"])) { %>
-                            <a href="Login.aspx" class="btn btn-outline-light rounded-pill px-4 fw-bold me-2">
-                                <i class="fa-solid fa-user me-2"></i> Iniciar Sesión
-                            </a>
-                            <a href="Registro.aspx" class="btn btn-primary rounded-pill px-4 fw-bold border-0 shadow-sm">
-                                <i class="fa-solid fa-user-plus me-2"></i> Registrarse
-                            </a>
+                            <a href="Login.aspx" class="btn btn-outline-light rounded-pill px-4 fw-bold me-2 btn-hover-scale"><i class="fa-solid fa-user me-2"></i> Iniciar Sesión</a>
+                            <a href="Registro.aspx" class="btn btn-primary rounded-pill px-4 fw-bold border-0 shadow-sm btn-hover-scale"><i class="fa-solid fa-user-plus me-2"></i> Registrarse</a>
                         <% } else { %>
                             <asp:Label ID="lblUser" runat="server" CssClass="text-light fw-bold me-3"></asp:Label>
                             <asp:Image ID="imgAvatar" runat="server" CssClass="me-3 shadow-sm" style="width: 40px; height: 40px; border-radius: 50%;" />
-                            <asp:Button ID="btnSalir" runat="server" Text="Salir" CssClass="btn btn-danger rounded-pill px-4 fw-bold shadow-sm" OnClick="btnSalir_Click" />
+                            <asp:Button ID="btnSalir" runat="server" Text="Salir" CssClass="btn btn-danger rounded-pill px-4 fw-bold shadow-sm btn-hover-scale" OnClick="btnSalir_Click" />
                         <% } %>
                     </div>
                 </div>
             </div>
         </nav>
-        <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-            <hr />
-            <footer>
+
+        <div class="container body-content mt-4">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+            <hr class="mt-5 text-secondary" />
+            <footer class="text-center text-muted pb-3">
                 <p>&copy; <%: DateTime.Now.Year %> - Complejo Deportivo</p>
             </footer>
         </div>

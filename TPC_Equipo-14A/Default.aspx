@@ -33,7 +33,7 @@
                     <img src="https://statics.diariomendoza.com.ar/2022/12/63a9f718988b1.jpg" class="d-block w-100" alt="Promo Cumpleaños">
                     <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded-3 p-3 mb-4 mx-auto" style="max-width: 600px;">
                         <h2 class="fw-bold text-warning text-uppercase">Promo Cumpleaños</h2>
-                        <p class="fs-6 text-light mb-0">Alquilá 3 horas seguidas y el tercer tiempo va por nuestra cuenta.</p>
+                        <p class="fs-6 text-light mb-0">Alquilá 3 horas seguidas y te regalamos 3 bebidas de tu preferencia.</p>
                     </div>
                 </div>
 

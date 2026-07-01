@@ -15,6 +15,15 @@ namespace TPC_Equipo_14A
     {
 
         /// <summary>
+        /// Control pnlFormulario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlFormulario;
+
+        /// <summary>
         /// Control ddlDeporte.
         /// </summary>
         /// <remarks>
@@ -69,15 +78,6 @@ namespace TPC_Equipo_14A
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPrecio;
 
         /// <summary>
-        /// Control chkMantenimiento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkMantenimiento;
-
-        /// <summary>
         /// Control chkActiva.
         /// </summary>
         /// <remarks>
@@ -85,6 +85,15 @@ namespace TPC_Equipo_14A
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkActiva;
+
+        /// <summary>
+        /// Control chkMantenimiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkMantenimiento;
 
         /// <summary>
         /// Control lblError.

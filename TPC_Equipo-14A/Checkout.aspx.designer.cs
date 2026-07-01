@@ -51,6 +51,15 @@ namespace TPC_Equipo_14A
         protected global::System.Web.UI.WebControls.Label lblSena;
 
         /// <summary>
+        /// Control chkTurnoFijo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkTurnoFijo;
+
+        /// <summary>
         /// Control btnPagarMercadoPago.
         /// </summary>
         /// <remarks>
