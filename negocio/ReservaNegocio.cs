@@ -18,15 +18,15 @@ namespace negocio
             try
             {
                 datos.setearConsulta(@"SELECT 
-                                r.Id, r.FechaHoraInicio, r.FechaHoraFin, r.IdEstado, r.EsTurnoFijo, r.FechaAlta, r.Observaciones,
-                                u.Id AS IdUsuario, u.Nombre AS NombreUsuario, u.Apellido AS ApellidoUsuario, u.Email,
-                                c.Id AS IdCancha, c.IdSuperficie,
-                                d.Id AS IdDeporte, d.Nombre AS NombreDeporte
-                               FROM Reservas r
-                               INNER JOIN Usuarios u ON r.IdUsuario = u.Id
-                               INNER JOIN Canchas c ON r.IdCancha = c.Id
-                               INNER JOIN Deportes d ON c.IdDeporte = d.Id
-                               ORDER BY r.FechaHoraInicio DESC");
+                        r.Id, r.FechaHoraInicio, r.FechaHoraFin, r.IdEstado, r.EsTurnoFijo, r.FechaAlta, r.Observaciones,
+                        u.Id AS IdUsuario, u.Nombre AS NombreUsuario, u.Apellido AS ApellidoUsuario, u.Email,
+                        c.Id AS IdCancha, c.IdSuperficie,
+                        d.Id AS IdDeporte, d.Nombre AS NombreDeporte
+                       FROM Reservas r
+                       INNER JOIN Usuarios u ON r.IdUsuario = u.Id
+                       INNER JOIN Canchas c ON r.IdCancha = c.Id
+                       INNER JOIN Deportes d ON c.IdDeporte = d.Id
+                       ORDER BY r.Id DESC");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())

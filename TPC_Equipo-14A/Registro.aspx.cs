@@ -18,7 +18,7 @@ namespace TPC_Equipo_14A
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
-            Page.Validate();
+            Page.Validate("vgRegistro");
             if (!Page.IsValid) return;
 
             try
@@ -33,6 +33,7 @@ namespace TPC_Equipo_14A
                 nuevo.Contrasena = txtPassword.Text;
                 nuevo.Rol = (Rol)2;
                 nuevo.Activo = true;
+
                 negocio.agregar(nuevo);
                 bool autologinExitoso = negocio.Loguear(nuevo);
 

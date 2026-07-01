@@ -96,12 +96,16 @@
                     <ul class="navbar-nav align-items-center">
                         <li class="nav-item"><a class="nav-link px-3 text-light" href="Default.aspx">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link px-3 text-light" href="Turnos.aspx">Reservar Turno</a></li>
-                        
+    
+                        <% if (negocio.Seguridad.sesionActiva(Session["usuario"])) { %>
+                            <li class="nav-item"><a class="nav-link px-3 text-light" href="MisReservas.aspx">Mis Reservas</a></li>
+                        <% } %>
+    
                         <% if (negocio.Seguridad.esAdmin(Session["usuario"])) { %>
-                            <li class="nav-item"><a class="nav-link px-3 text-light" href="Reservas.aspx">Reservas</a></li>
-                            <li class="nav-item"><a class="nav-link px-3 text-light" href="Deportes.aspx">Deportes</a></li>
-                            <li class="nav-item"><a class="nav-link px-3 text-light" href="Canchas.aspx">Canchas</a></li>
-                            <li class="nav-item"><a class="nav-link px-3 text-light" href="Usuarios.aspx">Usuarios</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 text-warning" href="Reservas.aspx">Gestión Reservas</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 text-warning" href="Deportes.aspx">Deportes</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 text-warning" href="Canchas.aspx">Canchas</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 text-warning" href="Usuarios.aspx">Usuarios</a></li>
                         <% } %>
                     </ul>
                     

@@ -202,6 +202,13 @@ namespace TPC_Equipo_14A
 
         protected void btnSeñar_Click(object sender, EventArgs e)
         {
+            if (!Seguridad.sesionActiva(Session["usuario"]))
+            {
+                Session.Add("error", "¡Ups! Necesitás iniciar sesión o registrarte para poder reservar una cancha.");
+                Response.Redirect("Login.aspx", false);
+                return;
+            }
+
             string horasStr = string.Join(",", HorasSeleccionadas);
             Response.Redirect($"Checkout.aspx?idCancha={IdCanchaSeleccionada}&fecha={txtFecha.Text}&horas={horasStr}");
         }

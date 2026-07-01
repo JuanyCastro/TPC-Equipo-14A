@@ -103,6 +103,7 @@
     <Content Include="AltaUsuario.aspx" />
     <Content Include="Checkout.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="MisReservas.aspx" />
     <Content Include="PagoExitoso.aspx" />
     <Content Include="PagoFallido.aspx" />
     <Content Include="PagoPendiente.aspx" />
@@ -223,6 +224,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MisReservas.aspx.cs">
+      <DependentUpon>MisReservas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MisReservas.aspx.designer.cs">
+      <DependentUpon>MisReservas.aspx</DependentUpon>
     </Compile>
     <Compile Include="PagoExitoso.aspx.cs">
       <DependentUpon>PagoExitoso.aspx</DependentUpon>

@@ -13,6 +13,13 @@ namespace TPC_Equipo_14A
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Seguridad.sesionActiva(Session["usuario"]))
+            {
+                Session.Add("error", "Tu sesión expiró. Volvé a ingresar para confirmar tu reserva.");
+                Response.Redirect("Login.aspx", false);
+                return;
+            }
+
             if (!IsPostBack)
             {
                 if (Request.QueryString["idCancha"] != null && Request.QueryString["fecha"] != null && Request.QueryString["horas"] != null)
@@ -63,9 +70,11 @@ namespace TPC_Equipo_14A
                 CanchaNegocio cNegocio = new CanchaNegocio();
                 Cancha canchaActual = cNegocio.listar().Find(c => c.Id == idCancha);
 
+                Usuario usuarioReal = (Usuario)Session["usuario"];
+
                 Reserva nuevaReserva = new Reserva
                 {
-                    Usuario = new Usuario { Id = 1 },
+                    Usuario = usuarioReal,
                     Cancha = canchaActual,
                     FechaHoraInicio = fechaInicio,
                     FechaHoraFin = fechaFin,
